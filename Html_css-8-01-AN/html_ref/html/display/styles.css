@@ -1,0 +1,61 @@
+
+
+body {
+    margin: 0;
+}
+
+.container {
+    width: 50vw;
+    height: 50vh;
+}
+
+.aboutDisplay {
+    width: 40%;
+    padding: 30px;
+    padding-left: 0;
+    background-color: gray;
+    position: absolute;
+}
+
+p {
+    font-size: medium;
+    font-weight: bold;
+}
+
+.p1 > span {
+    display: block;
+}
+
+.p2 > span{
+    display:inline;
+}
+.p4 > span{
+    display: inline-block;
+}
+
+span.a {
+    display: inline; /* the default for span */
+    width: 100px;
+    height: 100px;
+    padding: 5px;
+    border: 1px solid blue;  
+    background-color: yellow; 
+  }
+  
+  span.b {
+    display: inline-block;
+    width: 100px;
+    height: 100px;
+    padding: 5px;
+    border: 1px solid blue;    
+    background-color: yellow; 
+  }
+  
+  span.c {
+    display: block;
+    width: 100px;
+    height: 100px;
+    padding: 5px;
+    border: 1px solid blue;    
+    background-color: yellow; 
+  }

@@ -1,0 +1,25 @@
+
+
+.texttagHeading {
+    color: white;
+    /* font-size: xx-large; */
+    /* font-size: 100px; */
+    font-size: 2em; 
+    background-color: black;
+    padding: 10px;
+    margin: 10px;
+}
+
+input {
+    width: 200px;
+    height: 50px;
+    border-radius: 20px;
+    /* border-width: 10px;
+    border-color: purple;
+    border-style: solid; */
+    border: 10px solid purple;
+}
+
+img {
+    object-fit: cover;
+}
