@@ -2,7 +2,8 @@
 -- 1)Design a system to store all the data with respect to Cricket World cup. 
 -- Design should be scalable to store data for the world cup matches upcoming in the future.
 -- a) Create sample data in all the tables. 
-
+create database world_cup;
+use world_cup;
 create table world_cup(
 wc_id int(2) primary key, wc_fromdate date,wc_todate date,
 wc_place varchar(15), wc_winnerid int(2), wc_runnerid int(2)
@@ -154,19 +155,38 @@ group by(matches.team_id);
 
 
 -- e) Increase the scores of each batsmen in the team, which has the least average computed in Step 6, by 10 runs.
+-- select player_id, no_of_totalruns as pid from player
+--  where team_id= (select m.team_id
+-- from matches m inner join team t 
+-- on t.team_id=m.team_id
+-- group by(team_id)
+-- order by avg(m.score) asc limit 1);
+
 update  player set no_of_totalruns = no_of_totalruns+10
-where player_id in (select player_id from player where team_id=(
-select team_id
-from matches 
+where player_id in (select pid from 
+(select player_id as pid from player where team_id=
+(select m.team_id
+from matches m inner join team t 
+on t.team_id=m.team_id
 group by(team_id)
-order by avg(score) asc limit 1));
+order by avg(m.score) asc limit 1))as p) ;
 
 
 
 
 -- f) Create a procedure which takes country as the input and gives the highest score of the country up to date, as output
 
+DELIMITER $$
 
+CREATE PROCEDURE high_run2(country VARCHAR(20), OUT high_score INT(3))
+BEGIN
+SELECT max(score) into high_score from matches where team_id = (select team_id from team where team_name like country);
+END$$
+
+DELIMITER ;
+CALL high_run2('INDIA',@high_score);
+
+SELECT @high_score;
 
 
 
