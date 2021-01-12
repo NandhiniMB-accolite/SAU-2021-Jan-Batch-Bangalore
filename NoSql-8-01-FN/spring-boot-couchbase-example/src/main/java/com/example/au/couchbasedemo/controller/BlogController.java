@@ -35,6 +35,7 @@ public class BlogController {
     @GetMapping("/blogs/{id}")
     public Optional<Blogs> getBlog(@PathVariable String id) {
         if (blogRepository.existsById(id)) {
+        	System.out.println(blogRepository.findById(id));
             return blogRepository.findById(id);
         } else
             return Optional.empty();
@@ -43,6 +44,23 @@ public class BlogController {
     @GetMapping("/blogs/author/{author}")
     public Blogs getBlogByAuthorName(@PathVariable String author) {
         return blogRepository.findByAuthor(author);
+    }
+    
+    @GetMapping("/blogs/tag/{tag}")
+    public Blogs[] getBlogByTagName(@PathVariable String tag) {
+    	Blogs[] response = blogRepository.findByTag1(tag) ;// blogRepository.findByTag2(tag);
+    	if(response.length == 0) {
+    		response = blogRepository.findByTag2(tag);
+    		System.out.println("Tag 2");
+    	}
+    	if (response.length==0) {
+    		System.out.println("Tag 3");
+    		response = blogRepository.findByTag3(tag);
+    	}
+     	System.out.println(response.getClass().getName());
+        return response;
+  
+
     }
     
     @DeleteMapping("/blogs/topic/{topic}/author/{author}")

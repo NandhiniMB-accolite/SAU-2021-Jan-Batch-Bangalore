@@ -2,19 +2,35 @@ package com.example.au.couchbasedemo.model;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.couchbase.core.mapping.Document;
+import org.springframework.data.couchbase.core.mapping.Field;
+import com.sun.istack.NotNull;
 
-@Document
+
+@Document	
 public class Employee {
 	
 	@Id
 	private String empId;
-	private String empName;
-	private String address;
 	
-	public Employee(String empId, String empName, String address) {
+	@NotNull
+	@Field
+	private String empName;
+	
+	@NotNull
+	@Field
+	private String location;
+	
+	@NotNull
+	@Field
+	private String pinCode;
+	
+	
+	public Employee(String empId, String empName, String location, String pinCode) {
 		this.empId = empId;
 		this.empName = empName;
-		this.address = address;
+		this.location= location;
+		this.pinCode = pinCode;
+		
 	}
 
 	public String getEmpId() {
@@ -33,15 +49,19 @@ public class Employee {
 		this.empName = empName;
 	}
 
-	public String getAddress() {
-		return address;
+	public String getLocation() {
+		return location;
 	}
 
-	public void setAddress(String address) {
-		this.address = address;
+	public void setLocation(String location) {
+		this.location = location;
+	}
+	public String getPincode() {
+		return pinCode;
+	}
+
+	public void setPinCode(String pinCode) {
+		this.pinCode = pinCode;
 	}
 	
-	
-	
-
 }
