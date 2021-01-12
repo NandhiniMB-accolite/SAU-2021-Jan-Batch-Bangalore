@@ -11,5 +11,9 @@ public interface BlogRepository extends CrudRepository<Blogs, String> {
 	Blogs findByAuthor(String author);
 
 	List deleteBytopicAndAuthor(String title, String author);
+	
+	Blogs[] findByTag1(String tag1);
+	Blogs[] findByTag2(String tag2);
+	Blogs[] findByTag3(String tag3);
 	   
 }
