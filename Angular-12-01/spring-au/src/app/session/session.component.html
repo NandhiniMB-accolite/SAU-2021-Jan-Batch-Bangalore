@@ -1,0 +1,41 @@
+<p>session works!</p>
+{{sessionName}} 
+{{4+5}}
+<br>
+<!-- <ul>
+  <li *ngFor="let todo of todos let i=index" (click)="onSelectTodo(todo)" >
+    <span >{{todo.title}} -{{todo.is_completed }}</span>
+  </li>
+</ul> -->
+<ul>
+    <li *ngFor="let session of sessions let i=index"  (click)="onSelect(session)"  >
+      <span  [class.selected]="selectedSession === session">{{session.name}} -{{session.trainer }}</span>
+    </li>
+</ul>
+
+<nav>
+    <ul>
+      <li><a routerLink="/child-component" routerLinkActive="active">First Component</a></li>
+      <li><a routerLink="/parent-component" routerLinkActive="active">Second Component</a></li>
+    </ul>
+  </nav>
+
+<!-- <ul>
+    <li *ngFor="let d of data let i=index"   >
+        <span>{{d[0].title}}</span>
+    </li>
+</ul> -->
+
+
+selected session : {{selectedSession.name | uppercase}} 
+tranier Name = {{trainerName}}
+<input [(ngModel)]="trainerName" placeholder="trainer">
+<button [disabled]="true">Click</button>
+<button [disabled]="isDisabled">Click</button>
+<button (click)="onClickSession()">Click</button>
+<button (click)="getApiValue()">getAPI</button>
+
+
+<router-outlet></router-outlet>
+
+<!-- <app-child [childItem]="childValue"></app-child> -->
